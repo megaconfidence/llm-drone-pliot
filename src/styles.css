@@ -1,0 +1,186 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap");
+
+:root {
+  /* Primary (blue) */
+  --cf-orange: #3d74ff;
+  --cf-orange-hover: #5a8aff;
+  --cf-orange-light: #dfecff;
+  --cf-orange-border: rgba(61, 116, 255, 0.28);
+
+  /* Text (dark navy on white) */
+  --cf-text: #0a1a3a;
+  --cf-text-muted: rgba(10, 26, 58, 0.6);
+  --cf-text-faint: rgba(10, 26, 58, 0.42);
+
+  /* Backgrounds (white + pale blue) */
+  --cf-bg-100: #ffffff;
+  --cf-bg-200: #fafbff;
+  --cf-bg-300: #dfecff;
+  --cf-bg-header: rgba(255, 255, 255, 0.92);
+
+  /* Borders */
+  --cf-border: #d8e2f5;
+
+  /* Code */
+  --cf-code-bg: #0D0D0D;
+  --cf-code-text: #E4E4E7;
+  --cf-code-comment: #6B7280;
+  --cf-code-keyword: #5a8aff;
+  --cf-code-string: #FAAE40;
+  --cf-code-function: #38BDF8;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--cf-bg-100);
+  color: var(--cf-text);
+  overflow: hidden;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hero shine animation (title slides) */
+@keyframes hero-shine-in {
+  0% {
+    opacity: 0;
+    filter: blur(12px) brightness(2.4);
+  }
+  40% {
+    opacity: 1;
+    filter: blur(4px) brightness(1.6);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px) brightness(1);
+  }
+}
+.hero-shine {
+  animation: hero-shine-in 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Infinite ticker scroll */
+@keyframes infinite-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-infinite-scroll {
+  animation: infinite-scroll 40s linear infinite;
+}
+
+/* Terminal blinking cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Animated dash rotate for borders */
+@keyframes dash-rotate {
+  0%   { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -16; }
+}
+.animate-dash {
+  animation: dash-rotate 4s linear infinite;
+}
+
+/* Node breathing pulse */
+@keyframes node-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.02); }
+}
+.animate-breathe {
+  animation: node-breathe 3s ease-in-out infinite;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+}
+
+/* Slow flowing dashes */
+@keyframes dash-flow {
+  0%   { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -32; }
+}
+.animate-dash-flow {
+  animation: dash-flow 6s linear infinite;
+}
+
+/* Subtle drone hover wobble */
+@keyframes drone-hover {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50%      { transform: translateY(-6px) rotate(1deg); }
+}
+.animate-drone-hover {
+  animation: drone-hover 4s ease-in-out infinite;
+}
+
+/* Exact mirror of drone-hover: floats the opposite way for visible contrast */
+@keyframes drone-hover-inverse {
+  0%, 100% { transform: translateY(0) rotate(1deg); }
+  50%      { transform: translateY(6px) rotate(-1deg); }
+}
+.animate-drone-hover-inverse {
+  animation: drone-hover-inverse 4s ease-in-out infinite;
+}
+
+/* Propeller spin */
+@keyframes prop-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-prop-spin {
+  animation: prop-spin 0.15s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+/* Slow propeller for visual variety */
+.animate-prop-spin-slow {
+  animation: prop-spin 0.3s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+/* Photo-drone rotor sprites: spin while staying centered on their hub.
+   (keyframes keep the translate so the sprite rotates about the hub) */
+@keyframes rotor-cw {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes rotor-ccw {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+.animate-rotor-cw  { animation: rotor-cw 0.14s linear infinite; }
+.animate-rotor-ccw { animation: rotor-ccw 0.16s linear infinite; }
+
+/* Path trace stroke draw */
+@keyframes draw-path {
+  0%   { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* Pulse glow for active states */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.7; }
+  50%      { opacity: 1; }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 1.6s ease-in-out infinite;
+}
+
+/* Soft signal pulse rings */
+@keyframes signal-pulse {
+  0%   { transform: scale(0.4); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Hide scrollbar but keep scroll */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
