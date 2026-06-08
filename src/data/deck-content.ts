@@ -217,67 +217,10 @@ export const deckContent: DeckContent = {
       ],
     },
 
-    // 12. Quote
-    {
-      type: "quote",
-      eyebrow: "key insight",
-      quote: "The LLM is not holding a joystick.",
-      supporting: "It is translating intent into a short sequence of typed tool calls.",
-      small: "The drone is just one expression of that interface.",
-    },
-
-    // 13. Responsibilities
-    {
-      type: "responsibilities",
-      heading: "What belongs in the agent?",
-      left: {
-        title: "Agent owns",
-        items: [
-          "Conversation state",
-          "System prompt",
-          "Command planner",
-          "Tool calls",
-          "Live session state",
-          "Plan history",
-          "Telemetry snapshots",
-        ],
-      },
-      right: {
-        title: "Bridge owns",
-        items: [
-          "Raw UDP packets",
-          "Propeller timing",
-          "Device-specific retries",
-          "Low-level hardware I/O",
-        ],
-      },
-    },
-
-    // 14. Tool Vocabulary
-    {
-      type: "tool-vocabulary",
-      heading: "Teach the model the verbs of a new world.",
-      body: "The agent composes a compact command vocabulary instead of piloting raw.",
-      code: `type DroneCommand =
-  | { type: "takeoff" }
-  | { type: "land" }
-  | { type: "up" | "down" | "left" | "right" | "forward" | "back"; cm: number }
-  | { type: "cw" | "ccw"; degrees: number };`,
-      rules: [
-        "Require takeoff before movement",
-        "Use centimeters for distance",
-        "Use degrees for rotation",
-        "Keep routines short",
-        "Log every command",
-      ],
-      caption:
-        "Good agent tools feel less like giving the model root access and more like teaching it the verbs of a new world.",
-    },
-
-    // 15. Approval
+    // 12. Approval
     {
       type: "approval",
-      heading: "The agent proposes. The human launches.",
+      heading: "The agent proposes. The human approves.",
       plan: [
         "takeoff",
         "forward 50cm",
@@ -291,7 +234,7 @@ export const deckContent: DeckContent = {
         "Human approval makes world agents feel collaborative instead of reckless.",
     },
 
-    // 16. Ledger + Telemetry
+    // 13. Ledger + Telemetry
     {
       type: "ledger",
       heading: "If it can move, it needs a ledger.",
@@ -314,54 +257,7 @@ export const deckContent: DeckContent = {
       closing: "Logs make demos rehearsable, bugs explainable, and actions auditable.",
     },
 
-    // 17. Pattern
-    {
-      type: "pattern",
-      eyebrow: "the pattern you can reuse",
-      heading: "Every interesting agent is the same shape.",
-      loop: [
-        { label: "Observe", description: "Read the prompt, state, and world." },
-        { label: "Reason", description: "Pick a plan made of typed tool calls." },
-        { label: "Act", description: "Run tools through a bridge to the world." },
-        { label: "Remember", description: "Log every step so the next loop starts smarter." },
-      ],
-      formula: "model + tools + state + loop + environment = agent",
-      environments: ["room", "garden", "lab", "studio", "workshop"],
-    },
-
-    // 18. Benefits
-    {
-      type: "benefits",
-      heading: "This is useful because interfaces get easier.",
-      cards: [
-        {
-          label: "Approachable interfaces",
-          description: "People describe outcomes instead of memorizing control panels.",
-        },
-        {
-          label: "Better use of expertise",
-          description: "Experts encode safe tools, constraints, and approval gates once.",
-        },
-        {
-          label: "Safer automation",
-          description: "Typed tools, simulators, ledgers, telemetry, and approvals are inspectable.",
-        },
-        {
-          label: "Faster experimentation",
-          description: "Prototype with one sensor, one actuator, and a small loop.",
-        },
-        {
-          label: "Better collaboration",
-          description: "The agent narrates the plan, exposes uncertainty, and asks for confirmation.",
-        },
-        {
-          label: "Accessibility and inclusion",
-          description: "Language, voice, and adaptive interfaces make systems available to more people.",
-        },
-      ],
-    },
-
-    // 19. Use Cases Beyond Drones
+    // 14. Use Cases Beyond Drones
     {
       type: "use-cases",
       eyebrow: "beyond drones",
@@ -394,7 +290,7 @@ export const deckContent: DeckContent = {
       ],
     },
 
-    // 20. Use Cases (Higher Stakes)
+    // 15. Use Cases (Higher Stakes)
     {
       type: "use-cases",
       heading: "The pattern scales beyond the toy version.",
@@ -429,23 +325,7 @@ export const deckContent: DeckContent = {
         "Higher stakes require narrower tools, clearer approvals, better simulation, and stronger logs.",
     },
 
-    // 21. Build This Weekend
-    {
-      type: "build-weekend",
-      eyebrow: "build one this weekend",
-      heading: "Start with one sensor, one actuator, one delightful loop.",
-      blocks: [
-        { label: "WebSockets", description: "Keep the UI, agent, and bridge in the same conversation." },
-        { label: "Typed tool calls", description: "Constrain the planner. The model fills arguments, not capabilities." },
-        { label: "Session state", description: "Track plan, history, telemetry, and current mode." },
-        { label: "Local bridge", description: "Keep hardware-specific communication near the hardware." },
-        { label: "Event logs", description: "Replayable runs make debugging and demos tractable." },
-        { label: "Simulator", description: "Build the agent before plugging in the actuator." },
-      ],
-      closing: "Do not start with autonomy. Start with a loop you can understand.",
-    },
-
-    // 22. Closing
+    // 16. Closing
     {
       type: "closing",
       headline: "Build agents that leave the chat box.",
